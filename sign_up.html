@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BooksStore</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <div class="columns is-flex-direction-column">
+      <div class="column is-half is-offset-one-quarter">
+        <!-- card -->
+        <section class="section">
+          <div class="container">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title has-text-centered">Sign Up</p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <form id="signUpForm">
+                    <div class="field has-text-centered">
+                      <label for="email" class="label">Email</label>
+                      <div class="control">
+                        <input type="email" id="email" class="input" required />
+                      </div>
+                    </div>
+                    <div class="field has-text-centered">
+                      <label for="password" class="label">Password</label>
+                      <div class="control">
+                        <input
+                          type="password"
+                          id="password"
+                          class="input"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="field has-text-centered">
+                      <div class="control">
+                        <a href="books.html"
+                          ><button type="submit" class="button is-primary">
+                            Sign Up
+                          </button></a
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <footer class="card-footer">
+                <div class="card-footer-item">
+                  <p>
+                    Already have an account? <a href="sign_in.html">Sign In</a>
+                  </p>
+                </div>
+                <div class="card-footer-item">
+                  <button
+                    class="button is-secondary"
+                    onclick="redirectToHome()"
+                  >
+                    Home
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </section>
+        <!-- card-end -->
+        <script>
+          function redirectToHome() {
+            window.location.href = "index.html";
+          }
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

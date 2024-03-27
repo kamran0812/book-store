@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BooksStore</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <div class="columns is-flex-direction-column">
+      <div class="column is-half is-offset-one-quarter">
+        <div class="container mt-5">
+          <h1 class="title is-1 mb-4">Bookstore Management</h1>
+
+          <a href="add_book.html" class="button is-primary">Add Book</a>
+          <a href="index.html" class="button is-danger is-light ml-2"
+            >Sign Out</a
+          >
+
+          <h2 class="title is-2 mt-4">Books</h2>
+          <div id="bookList" class="columns is-multiline"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let books = JSON.parse(localStorage.getItem("books"));
+
+      // If booksData doesn't exist in local storage, set the initial data
+      if (!books) {
+        books = [
+          {
+            title: "Book 1",
+            authors: "Author 1",
+            publisher: "Publisher 1",
+            year: 2001,
+          },
+          {
+            title: "Book 2",
+            authors: "Author 2",
+            publisher: "Publisher 2",
+            year: 2002,
+          },
+          {
+            title: "Book 3",
+            authors: "Author 3",
+            publisher: "Publisher 3",
+            year: 2003,
+          },
+        ];
+
+        // Save the initial data to local storage
+        localStorage.setItem("books", JSON.stringify(books));
+      }
+      // Function to render book list with edit and delete options
+      function renderBookList(books) {
+        const bookListElement = document.getElementById("bookList");
+        bookListElement.innerHTML = "";
+        books.forEach((book, index) => {
+          const card = document.createElement("div");
+          card.className = "column is-one-third";
+          card.innerHTML = `
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">${book.title}</p>
+                            <p><strong>Authors:</strong> ${book.authors}</p>
+                            <p><strong>Publisher:</strong> ${book.publisher}</p>
+                            <p><strong>Year:</strong> ${book.year}</p>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item button is-info" onclick="editBook(${index})">Edit</a>
+                            <a href="#" class="card-footer-item button is-danger" onclick="deleteBook(${index})">Delete</a>
+                        </footer>
+                    </div>
+                `;
+          bookListElement.appendChild(card);
+        });
+      }
+
+      // Edit book function (redirect to editbook.html)
+      function editBook(index) {
+        // Redirect to editbook.html with book index as URL parameter
+        window.location.href = `editbook.html?index=${index}`;
+      }
+
+      // Delete book function
+      function deleteBook(index) {
+        // Example: You can delete the book from the local array
+        // Replace this logic with your database or backend API integration
+        // For example, you can send a DELETE request to your backend API to delete the book from the database
+
+        // Delete the book from the local array (for demonstration)
+        books.splice(index, 1);
+
+        // Render the updated book list
+        renderBookList(books);
+      }
+
+      // Render initial book list
+      renderBookList(books);
+    </script>
+  </body>
+</html>

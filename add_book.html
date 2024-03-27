@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BooksStore</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <div class="columns is-flex-direction-column">
+      <div class="column is-half is-offset-one-quarter">
+        <div class="container">
+          <h2 class="title is-2 has-text-centered mb-4">Add Book</h2>
+          <form id="addBookForm">
+            <div class="field">
+              <label for="title" class="label">Title:</label>
+              <div class="control">
+                <input type="text" id="title" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="authors" class="label">Authors:</label>
+              <div class="control">
+                <input type="text" id="authors" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="publisher" class="label">Publisher:</label>
+              <div class="control">
+                <input type="text" id="publisher" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="year" class="label">Year:</label>
+              <div class="control">
+                <input type="number" id="year" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-primary">
+                  Add Book
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Add book form submission handler
+      document
+        .getElementById("addBookForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          // Get book details from form inputs
+          const title = document.getElementById("title").value.trim();
+          const authors = document.getElementById("authors").value.trim();
+          const publisher = document.getElementById("publisher").value.trim();
+          const year = document.getElementById("year").value.trim();
+
+          // Validate form inputs
+          if (!title || !authors || !publisher || !year) {
+            alert("Please fill in all fields.");
+            return;
+          }
+
+          // Create book object
+          const book = {
+            title: title,
+            authors: authors,
+            publisher: publisher,
+            year: year,
+          };
+
+          // Add the book to the local array (for demonstration)
+          let books = JSON.parse(localStorage.getItem("books")) || [];
+
+          // Add the new book to the existing books array
+          books.push(book);
+
+          // Update the local storage with the updated books array
+          localStorage.setItem("books", JSON.stringify(books));
+          // Redirect to books.html after adding the book
+          window.location.href = "books.html";
+        });
+    </script>
+  </body>
+</html>

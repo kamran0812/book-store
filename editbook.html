@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BooksStore</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <div class="columns is-flex-direction-column">
+      <div class="column is-half is-offset-one-quarter">
+        <div class="container">
+          <h2 class="title is-2 has-text-centered mb-4">Edit Book</h2>
+          <form id="editBookForm">
+            <div class="field">
+              <label for="title" class="label">Title:</label>
+              <div class="control">
+                <input type="text" id="title" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="authors" class="label">Authors:</label>
+              <div class="control">
+                <input type="text" id="authors" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="publisher" class="label">Publisher:</label>
+              <div class="control">
+                <input type="text" id="publisher" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="year" class="label">Year:</label>
+              <div class="control">
+                <input type="number" id="year" class="input" required />
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-primary">
+                  Save Changes
+                </button>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-primary">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
